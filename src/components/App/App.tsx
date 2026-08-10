@@ -77,6 +77,19 @@ const App = () => {
       {selectedMovie && (
         <MovieModal movie={selectedMovie} onClose={onModalClose} />
       )}
+       {isSuccess && (
+        <ReactPaginate
+          pageCount={data?.total_pages}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          onPageChange={({ selected }) => setPage(selected + 1)}
+          forcePage={currentPage - 1}
+          containerClassName={css.pagination}
+          activeClassName={css.active}
+          nextLabel="→"
+          previousLabel="←"
+        />
+      )}
       <Toaster position="top-right" />
     </>
   );
