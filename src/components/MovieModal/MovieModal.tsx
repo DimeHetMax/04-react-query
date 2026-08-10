@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import { useEffect } from "react";
 import css from "./MovieModal.module.css";
+import noImage from "../../assets/images/no_img.jpg";
 import type { Movie } from "../../types/movie";
 
 interface MovieModalProps {
@@ -44,7 +45,11 @@ const MovieModal = ({ movie, onClose }: MovieModalProps) => {
           &times;
         </button>
         <img
-          src={`${import.meta.env.VITE_TMDB_IMG_BACKDROP_URL}/${backdrop_path}`}
+          src={
+            backdrop_path
+              ? `${import.meta.env.VITE_TMDB_IMG_BACKDROP_URL}${backdrop_path}`
+              : noImage
+          }
           alt={title}
           className={css.image}
         />
