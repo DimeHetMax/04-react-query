@@ -40,7 +40,7 @@ const App = () => {
   const onPageChange = (pageNumber: number) => {
     setPage(pageNumber);
   };
-  const hasData = !isLoading && !isError && data?.results.length > 0;
+  const hasData = !isLoading && !isError && data && data?.results.length > 0;
   return (
     <>
       <SearchBar onSubmit={onSubmit} />
@@ -53,7 +53,7 @@ const App = () => {
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      {hasData && <MovieGrid movies={data.results} onSelect={onSelect} />}
+      {hasData && <MovieGrid movies={data?.results} onSelect={onSelect} />}
       {selectedMovie && (
         <MovieModal movie={selectedMovie} onClose={onModalClose} />
       )}
