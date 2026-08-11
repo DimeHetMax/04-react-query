@@ -43,14 +43,16 @@ const Card = ({ movie, rank }: CardProps) => {
         <div className={css.shade} />
 
         <div className={css.topLine}>
-          <span className={css.upcoming}>Upcoming</span>
+          <div className={css.badges}>
+            <span className={css.upcoming}>Upcoming</span>
+            <span className={css.language}>{original_language}</span>
+            {adult && <span className={css.adult}>18+</span>}
+          </div>
           <span className={css.rank}>#{String(rank).padStart(2, "0")}</span>
         </div>
 
         <div className={css.content}>
           <div className={css.meta}>
-            <span className={css.language}>{original_language}</span>
-            {adult && <span className={css.adult}>18+</span>}
             <time dateTime={release_date}>{formatReleaseDate(release_date)}</time>
           </div>
 

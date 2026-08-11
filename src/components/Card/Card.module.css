@@ -1,5 +1,6 @@
 .item {
   position: relative;
+  container-type: size;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -57,9 +58,17 @@
   right: 14px;
   left: 14px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
 }
 
 .upcoming,
@@ -111,7 +120,8 @@
 
 .language {
   color: #fff;
-  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 12, 12, 0.62);
   backdrop-filter: blur(8px);
 }
 
@@ -137,19 +147,23 @@
 .overview {
   display: -webkit-box;
   overflow: hidden;
-  margin: 10px 0 0;
+  max-height: 0;
+  margin: 0;
   color: #d1d1d1;
   font-size: 13px;
   line-height: 1.45;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition: max-height 220ms ease, margin 220ms ease, opacity 220ms ease,
+    transform 220ms ease;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .item:hover .overview,
 .item:focus-visible .overview {
+  max-height: 3em;
+  margin-top: 10px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -178,6 +192,31 @@
   color: #a8a8a8;
   font-size: 11px;
   white-space: nowrap;
+}
+
+@container (max-height: 240px) {
+  .content {
+    padding: 14px;
+  }
+
+  .meta {
+    margin-bottom: 6px;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .overview,
+  .item:hover .overview,
+  .item:focus-visible .overview {
+    display: none;
+  }
+
+  .ratingRow {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
 }
 
 @media (hover: none) {
