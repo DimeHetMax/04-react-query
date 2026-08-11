@@ -1,10 +1,11 @@
-import type { UpcomingMovie } from "../../types/movie";
+import type { UpcomingMovie, Movie } from "../../types/movie";
 import noImage from "../../assets/images/no_img.jpg";
 import css from "./Card.module.css";
 
 interface CardProps {
   movie: UpcomingMovie;
   rank: number;
+  setMovie: (movie: Movie) => void;
 }
 
 const formatReleaseDate = (date: string) => {
@@ -17,7 +18,7 @@ const formatReleaseDate = (date: string) => {
   }).format(new Date(date));
 };
 
-const Card = ({ movie, rank }: CardProps) => {
+const Card = ({ movie, rank, setMovie }: CardProps) => {
   const {
     adult,
     backdrop_path,
@@ -28,6 +29,7 @@ const Card = ({ movie, rank }: CardProps) => {
     title,
     vote_average,
     vote_count,
+    id,
   } = movie;
 
   const image = backdrop_path
@@ -37,7 +39,21 @@ const Card = ({ movie, rank }: CardProps) => {
       : noImage;
 
   return (
-    <li className={css.item} tabIndex={0}>
+    <li
+      className={css.item}
+      tabIndex={0}
+      onClick={() =>
+        setMovie({
+          id,
+          title,
+          poster_path,
+          backdrop_path,
+          overview,
+          release_date,
+          vote_average,
+        })
+      }
+    >
       <article className={css.card}>
         <img className={css.image} src={image} alt={title} loading="lazy" />
         <div className={css.shade} />
@@ -53,11 +69,15 @@ const Card = ({ movie, rank }: CardProps) => {
 
         <div className={css.content}>
           <div className={css.meta}>
-            <time dateTime={release_date}>{formatReleaseDate(release_date)}</time>
+            <time dateTime={release_date}>
+              {formatReleaseDate(release_date)}
+            </time>
           </div>
 
           <h3 className={css.title}>{title}</h3>
-          <p className={css.overview}>{overview || "More details coming soon."}</p>
+          <p className={css.overview}>
+            {overview || "More details coming soon."}
+          </p>
 
           <div className={css.ratingRow}>
             <span
@@ -66,7 +86,9 @@ const Card = ({ movie, rank }: CardProps) => {
             >
               <span aria-hidden="true">★</span> {vote_average.toFixed(1)}
             </span>
-            <span className={css.votes}>{vote_count.toLocaleString()} votes</span>
+            <span className={css.votes}>
+              {vote_count.toLocaleString()} votes
+            </span>
           </div>
         </div>
       </article>

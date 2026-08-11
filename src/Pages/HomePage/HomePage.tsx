@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 
@@ -5,18 +6,26 @@ import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import Navigation from "../../components/Navigation/Navigation";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import UpcominMoviesSection from "../../components/upcominMovies/UpcominMovies";
-
+import MovieModal from "../../components/MovieModal/MovieModal";
+import PopularSeriesSection from "../../components/PopularSeries/PopularSeriesSection";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import SeriesModal from "../../components/SeriesModal/SeriesModal";
+import Footer from "../../components/Footer/Footer";
 //Services
 import fetchPopularMovies from "../../services/popularService";
 import fetchUpcomingMovies from "../../services/upcomingServices";
+import fetchPopularSeries from "../../services/popularSericeService";
 
 //styles
 import css from "./HomePage.module.css";
-import { useState } from "react";
+//Type
+import type { Movie } from "../../types/movie";
+import type { PopularSeries } from "../../types/series";
+
 
 const HomePage = () => {
+  //Popular Movies
   const {
     data: popularMovie,
     isSuccess: isSuccessPopularMovie,
@@ -30,6 +39,7 @@ const HomePage = () => {
   });
 
   const [upcomingPage, setUpcomingPage] = useState<number>(1);
+  //Upcoming Movies
   const {
     data: upcomingMovies,
     isLoading: isUpcomingLoading,
@@ -39,13 +49,37 @@ const HomePage = () => {
     queryFn: () => fetchUpcomingMovies(upcomingPage),
     placeholderData: keepPreviousData,
   });
-  console.log("Home Page Upcoming Movies", upcomingMovies);
-
+  //Movie for Modal
+  const [chosenMovie, setChosenMovie] = useState<Movie | null>(null);
+  const onCloseMovie = () => {
+    setChosenMovie(null);
+  };
   const hasMovies =
     isSuccessPopularMovie &&
     !errorPopularMovie &&
     !isErrorPopularMovie &&
     popularMovie?.results.length > 0;
+  //Popular series
+  const [popularSeriesPage, setPopularSeriesPage] = useState<number>(1);
+  const {
+    data: popularSeries,
+    isLoading: isLoadingPopularSeries,
+    isError: isErrorPopularSeries,
+    error: ErrorPopularSeries,
+  } = useQuery({
+    queryKey: ["popularSeries", popularSeriesPage],
+    queryFn: () => fetchPopularSeries(popularSeriesPage),
+    placeholderData: keepPreviousData,
+  });
+  const [chosenSeries, setChosenSeries] = useState<PopularSeries | null>(null);
+  const onCloseSeries = () => {
+    setChosenSeries(null);
+  };
+  const hasSeries =
+    !ErrorPopularSeries &&
+    !isLoadingPopularSeries &&
+    !isErrorPopularMovie &&
+    popularSeries.results.length > 0;
   return (
     <div className={css.page}>
       <Navigation />
@@ -77,9 +111,28 @@ const HomePage = () => {
             currentPage={upcomingPage}
             totalPages={upcomingMovies?.total_pages}
             setPage={setUpcomingPage}
+            setMovie={setChosenMovie}
+          />
+        )}
+
+        {isLoadingPopularSeries && <Loader />}
+        {isErrorPopularSeries && <ErrorMessage />}
+        {hasSeries && (
+          <PopularSeriesSection
+            series={popularSeries?.results}
+            currentPage={popularSeriesPage}
+            totalPages={popularSeries?.total_pages}
+            setPage={setPopularSeriesPage}
+            setSeries={setChosenSeries}
           />
         )}
       </main>
+     <Footer></Footer>
+
+      {chosenMovie && <MovieModal movie={chosenMovie} onClose={onCloseMovie} />}
+      {chosenSeries && (
+        <SeriesModal series={chosenSeries} onClose={onCloseSeries} />
+      )}
     </div>
   );
 };

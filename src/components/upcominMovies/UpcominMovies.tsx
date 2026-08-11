@@ -1,7 +1,7 @@
 import Container from "../Container/Container";
 import Card from "../Card/Card";
 import css from "./UpcominMovies.module.css";
-import type { UpcomingMovie } from "../../types/movie";
+import type { UpcomingMovie, Movie } from "../../types/movie";
 
 // Pagination
 import ReactPaginateModule from "react-paginate";
@@ -20,6 +20,7 @@ interface UpcominMoviesSectionProps {
   currentPage: number;
   totalPages: number;
   setPage: (page: number) => void;
+  setMovie:(movie: Movie)=> void
 }
 
 const UpcominMoviesSection = ({
@@ -27,6 +28,7 @@ const UpcominMoviesSection = ({
   currentPage,
   totalPages,
   setPage,
+  setMovie
 }: UpcominMoviesSectionProps) => {
   const hasMovies = upcomingMovies.length > 0;
 
@@ -47,7 +49,7 @@ const UpcominMoviesSection = ({
             aria-label={`Upcoming movies, page ${currentPage}`}
           >
             {upcomingMovies.map((movie, index) => (
-              <Card key={movie.id} movie={movie} rank={index + 1} />
+              <Card key={movie.id} movie={movie} rank={index + 1} setMovie={setMovie} />
             ))}
           </ul>
         )}
