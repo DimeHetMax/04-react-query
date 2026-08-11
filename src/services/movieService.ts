@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Movie } from "../types/movie";
 
-const API = axios.create({
+  export const API = axios.create({
   baseURL: `${import.meta.env.VITE_TMDB_URL}`,
   headers: { Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}` },
 });
@@ -21,7 +21,6 @@ const fetchMovies = async (
       page,
     },
   });
-  console.log(response);
   return response.data;
 };
 
