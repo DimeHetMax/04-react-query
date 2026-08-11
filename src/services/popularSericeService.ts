@@ -14,7 +14,6 @@ const fetchPopularSeries = async (
       page,
     },
   });
-  console.log(response);
   return response.data;
 };
 export default fetchPopularSeries;

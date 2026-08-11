@@ -79,7 +79,7 @@ const HomePage = () => {
     !ErrorPopularSeries &&
     !isLoadingPopularSeries &&
     !isErrorPopularMovie &&
-    popularSeries.results.length > 0;
+    popularSeries?.results?.length > 0;
   return (
     <div className={css.page}>
       <Navigation />
@@ -117,7 +117,7 @@ const HomePage = () => {
 
         {isLoadingPopularSeries && <Loader />}
         {isErrorPopularSeries && <ErrorMessage />}
-        {hasSeries && (
+        {hasSeries && popularSeries &&(
           <PopularSeriesSection
             series={popularSeries?.results}
             currentPage={popularSeriesPage}
