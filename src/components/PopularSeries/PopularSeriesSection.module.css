@@ -18,14 +18,13 @@
     color: #d2d2d2;
     background: #242424;
     transition: border-color 180ms ease, background-color 180ms ease,
-        color 180ms ease, transform 180ms ease;
+        color 180ms ease;
 }
 
 .pagination li:hover:not(.active) {
     border-color: #737373;
     color: #fff;
     background: #333;
-    transform: translateY(-2px);
 }
 
 .pagination a {

@@ -48,8 +48,8 @@ const UpcominMoviesSection = ({
             className={css.grid}
             aria-label={`Upcoming movies, page ${currentPage}`}
           >
-            {upcomingMovies.map((movie, index) => (
-              <Card key={movie.id} movie={movie} rank={index + 1} setMovie={setMovie} />
+            {upcomingMovies.map((movie) => (
+              <Card key={movie.id} movie={movie} setMovie={setMovie} />
             ))}
           </ul>
         )}

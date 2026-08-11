@@ -85,7 +85,7 @@ const SeriesModal = ({ series, onClose }: SeriesModalProps) => {
         <div className={css.hero}>
           <img className={css.backdropImage} src={backdrop} alt="" />
           <div className={css.heroShade} />
-          <span className={css.catalogue}>Netflix Series · #{id}</span>
+          <span className={css.catalogue}>TV Series · #{id}</span>
         </div>
 
         <div className={css.body}>

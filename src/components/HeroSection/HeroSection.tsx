@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "../../index.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 import type { PopularMovie } from "../../types/movie";
 import css from "./HeroSection.module.css";
@@ -44,7 +44,7 @@ const HeroSection = ({ popularMovies }: HeroSectionProps) => {
       }}
       loop={shuffledMovies.length > 1}
       speed={900}
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Autoplay]}
       className={css.slider}
     >
       {shuffledMovies.map((movie) => (

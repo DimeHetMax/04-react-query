@@ -20,7 +20,7 @@ const SeriesGrid = ({ onSelectSeries, series }: SeriesGridProps) => {
 
   return (
     <ul className={css.grid} aria-label="Popular TV series">
-      {series.map((seriesItem, index) => {
+      {series.map((seriesItem) => {
         const {
           backdrop_path,
           first_air_date,
@@ -56,14 +56,8 @@ const SeriesGrid = ({ onSelectSeries, series }: SeriesGridProps) => {
               <img className={css.image} src={image} alt={name} loading="lazy" />
               <div className={css.overlay} />
 
-              <div className={css.index} aria-hidden="true">
-                <span>Series</span>
-                {String(index + 1).padStart(2, "0")}
-              </div>
-
               <div className={css.content}>
                 <div className={css.meta}>
-                  <span className={css.match}>98% Match</span>
                   <span>{releaseYear}</span>
                   <span className={css.language}>{original_language}</span>
                 </div>

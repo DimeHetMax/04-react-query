@@ -4,7 +4,6 @@ import css from "./Card.module.css";
 
 interface CardProps {
   movie: UpcomingMovie;
-  rank: number;
   setMovie: (movie: Movie) => void;
 }
 
@@ -18,7 +17,7 @@ const formatReleaseDate = (date: string) => {
   }).format(new Date(date));
 };
 
-const Card = ({ movie, rank, setMovie }: CardProps) => {
+const Card = ({ movie, setMovie }: CardProps) => {
   const {
     adult,
     backdrop_path,
@@ -60,11 +59,9 @@ const Card = ({ movie, rank, setMovie }: CardProps) => {
 
         <div className={css.topLine}>
           <div className={css.badges}>
-            <span className={css.upcoming}>Upcoming</span>
             <span className={css.language}>{original_language}</span>
             {adult && <span className={css.adult}>18+</span>}
           </div>
-          <span className={css.rank}>#{String(rank).padStart(2, "0")}</span>
         </div>
 
         <div className={css.content}>

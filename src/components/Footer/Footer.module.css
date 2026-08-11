@@ -4,9 +4,7 @@
   margin-top: auto;
   padding-block: 42px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    radial-gradient(circle at 12% 0%, rgba(229, 9, 20, 0.1), transparent 22rem),
-    #0b0b0b;
+  background: #0b0b0b;
 }
 
 .topRow {
@@ -23,12 +21,11 @@
   gap: 9px;
   flex-shrink: 0;
   text-decoration: none;
-  transition: filter 180ms ease, transform 180ms ease;
+  transition: opacity 160ms ease;
 }
 
 .logo:hover {
-  filter: brightness(1.18);
-  transform: translateY(-2px);
+  opacity: 0.85;
 }
 
 .logoMark {
@@ -36,15 +33,12 @@
   place-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 7px 2px;
+  border-radius: 4px;
   color: #fff;
-  background: linear-gradient(115deg, #e50914 0 45%, #a0060e 46% 58%, #e50914 59%);
-  box-shadow: 0 5px 18px rgba(229, 9, 20, 0.34);
+  background: #e50914;
   font-size: 20px;
   font-weight: 900;
-  font-style: italic;
   line-height: 1;
-  transform: skewX(-4deg);
 }
 
 .logoText {

@@ -2,21 +2,7 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 75% 45%, rgba(229, 9, 20, 0.2), transparent 30rem),
-    linear-gradient(135deg, #070707 0%, #141414 55%, #090909 100%);
-}
-
-.page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.22;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 46px 46px;
+  background: #141414;
 }
 
 .hero {
@@ -67,16 +53,15 @@
   margin: 0 0 22px;
   color: #e50914;
   font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2.4px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: "";
   width: 34px;
-  height: 3px;
-  border-radius: 999px;
+  height: 2px;
   background: currentColor;
 }
 
@@ -84,15 +69,14 @@
   max-width: 720px;
   margin: 0;
   color: #f5f5f1;
-  font-size: clamp(48px, 6.8vw, 94px);
-  font-weight: 900;
-  line-height: 0.96;
-  letter-spacing: -4px;
+  font-size: clamp(44px, 5.8vw, 78px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2.8px;
 }
 
 .title span {
   color: #e50914;
-  text-shadow: 0 8px 30px rgba(229, 9, 20, 0.22);
 }
 
 .description {
@@ -110,14 +94,13 @@
   align-self: flex-start;
   gap: 13px;
   padding: 14px 24px;
-  border-radius: 6px;
+  border-radius: 4px;
   color: #fff;
   background: #e50914;
-  box-shadow: 0 12px 34px rgba(229, 9, 20, 0.32);
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
-  transition: background-color 180ms ease, transform 180ms ease;
+  transition: background-color 160ms ease;
 }
 
 .button span {
@@ -126,16 +109,10 @@
   justify-content: center;
   font-size: 22px;
   line-height: 1;
-  transition: transform 180ms ease;
 }
 
 .button:hover {
-  background: #f6121d;
-  transform: translateY(-2px);
-}
-
-.button:hover span {
-  transform: translateX(4px);
+  background: #c40812;
 }
 
 @media (max-width: 900px) {

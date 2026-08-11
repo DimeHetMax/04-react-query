@@ -5,8 +5,7 @@
     padding: 18px 4%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     background: rgba(10, 10, 10, 0.9);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
 }
 
 .container {
@@ -27,13 +26,11 @@
     color: #e50914;
     text-decoration: none;
     text-transform: uppercase;
-    text-shadow: 0 0 22px rgba(229, 9, 20, 0.24);
-    transition: color 180ms ease, transform 180ms ease;
+    transition: color 160ms ease;
 }
 
 .link:hover {
     color: #f6121d;
-    transform: scale(1.02);
 }
 
 .form {
@@ -77,22 +74,14 @@
     border-radius: 5px;
     color: #fff;
     background: #e50914;
-    box-shadow: 0 4px 18px rgba(229, 9, 20, 0.25);
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 180ms ease, transform 180ms ease,
-        box-shadow 180ms ease;
+    transition: background-color 160ms ease;
 }
 
 .button:hover {
-    background: #f6121d;
-    box-shadow: 0 6px 24px rgba(229, 9, 20, 0.4);
-    transform: translateY(-1px);
-}
-
-.button:active {
-    transform: translateY(0);
+    background: #c40812;
 }
 
 @media (max-width: 640px) {
