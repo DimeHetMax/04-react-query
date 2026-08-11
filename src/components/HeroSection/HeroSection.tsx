@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
-
 import "../../index.css";
 
 // import required modules
@@ -36,7 +34,6 @@ const HeroSection = ({ popularMovies }: HeroSectionProps) => {
 
   return (
     <Swiper
-      pagination
       autoplay={{
         delay: 4000,
         disableOnInteraction: false,
