@@ -39,9 +39,9 @@ const Navigation = () => {
                 className={({ isActive }) =>
                   `${css.link} ${isActive ? css.active : ""}`
                 }
-                to="/another"
+                to="/about"
               >
-                Another
+                About
               </NavLink>
             </li>
           </ul>
