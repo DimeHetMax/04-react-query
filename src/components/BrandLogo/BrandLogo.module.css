@@ -1,0 +1,67 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 160ms ease;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  color: #fff;
+  background: #e50914;
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.text {
+  color: #f5f5f1;
+  font-size: clamp(21px, 2.2vw, 29px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+.text span {
+  color: #e50914;
+}
+
+.compact {
+  gap: 9px;
+}
+
+.compact .mark {
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+}
+
+.compact .text {
+  font-size: 22px;
+  letter-spacing: -1.2px;
+}
+
+@media (max-width: 640px) {
+  .mark {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    transition: none;
+  }
+}

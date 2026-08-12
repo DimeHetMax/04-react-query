@@ -1,19 +1,8 @@
 import Container from "../Container/Container";
 import Card from "../Card/Card";
+import Pagination from "../Pagination/Pagination";
 import css from "./UpcominMovies.module.css";
 import type { UpcomingMovie, Movie } from "../../types/movie";
-
-// Pagination
-import ReactPaginateModule from "react-paginate";
-import type { ReactPaginateProps } from "react-paginate";
-import type { ComponentType } from "react";
-
-type ModuleWithDefault<T> = { default: T };
-const ReactPaginate = (
-  ReactPaginateModule as unknown as ModuleWithDefault<
-    ComponentType<ReactPaginateProps>
-  >
-).default;
 
 interface UpcominMoviesSectionProps {
   upcomingMovies: UpcomingMovie[];
@@ -55,16 +44,10 @@ const UpcominMoviesSection = ({
         )}
 
         {hasMovies && (
-          <ReactPaginate
-            pageCount={totalPages}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={1}
-            onPageChange={({ selected }) => setPage(selected + 1)}
-            forcePage={currentPage - 1}
-            containerClassName={css.pagination}
-            activeClassName={css.active}
-            nextLabel="→"
-            previousLabel="←"
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setPage}
           />
         )}
       </Container>

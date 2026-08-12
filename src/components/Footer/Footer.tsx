@@ -1,5 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Container from "../Container/Container";
+import BrandLogo from "../BrandLogo/BrandLogo";
 import css from "./Footer.module.css"
 
 const Footer = () => {
@@ -9,14 +10,7 @@ const Footer = () => {
     <footer className={css.footer}>
       <Container>
         <div className={css.topRow}>
-          <Link className={css.logo} to="/" aria-label="MovieFlix home">
-            <span className={css.logoMark} aria-hidden="true">
-              M
-            </span>
-            <span className={css.logoText}>
-              Movie<span>Flix</span>
-            </span>
-          </Link>
+          <BrandLogo compact />
 
           <nav aria-label="Footer navigation">
             <ul className={css.navigation}>

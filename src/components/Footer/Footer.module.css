@@ -15,45 +15,6 @@
   padding-bottom: 32px;
 }
 
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  flex-shrink: 0;
-  text-decoration: none;
-  transition: opacity 160ms ease;
-}
-
-.logo:hover {
-  opacity: 0.85;
-}
-
-.logoMark {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  color: #fff;
-  background: #e50914;
-  font-size: 20px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.logoText {
-  color: #f5f5f1;
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -1.2px;
-  text-transform: uppercase;
-}
-
-.logoText span {
-  color: #e50914;
-}
-
 .navigation {
   display: flex;
   align-items: center;
@@ -146,7 +107,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo,
   .link,
   .link::after {
     transition: none;

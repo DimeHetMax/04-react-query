@@ -1,15 +1,13 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Container from "../Container/Container";
+import BrandLogo from "../BrandLogo/BrandLogo";
 import css from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
     <header className={css.header}>
       <Container className={css.container}>
-        <Link className={css.logo} to="/" aria-label="MovieFlix home">
-          <span className={css.logoMark} aria-hidden="true">M</span>
-          <span className={css.logoText}>Movie<span>Flix</span></span>
-        </Link>
+        <BrandLogo />
 
         <nav aria-label="Main navigation">
           <ul className={css.list}>
